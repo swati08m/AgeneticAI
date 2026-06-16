@@ -1,0 +1,76 @@
+Key Aspects of LangGraph with Meanings
+| Aspect                  | Meaning                                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------------------- |
+| State Management        | Stores shared data that moves through the workflow. Each node can read or update this state.             |
+| Nodes                   | Individual functions or processing steps in the graph. A node performs a specific task.                  |
+| Edges                   | Connections between nodes that define workflow direction. They control how execution moves.              |
+| Conditional Routing     | Dynamically selects the next step based on conditions or outputs. Helps create intelligent workflows.    |
+| Cycles / Loops          | Allows workflows to repeat steps until a condition is satisfied. Useful for retries and reasoning loops. |
+| Tool Calling            | Enables agents to use external tools like APIs, databases, or search systems.                            |
+| Memory                  | Stores past interactions or workflow history. Helps maintain context in conversations.                   |
+| Adaptability            | Allows the system to change behavior based on inputs, results, or situations.                            |
+| Reasoning               | Helps agents think step-by-step before generating answers or actions.                                    |
+| Planning                | Decides the sequence of actions needed to complete a task effectively.                                   |
+| Reflection              | Lets the agent review and improve its own output before finalizing.                                      |
+| Retry Mechanism         | Automatically retries failed operations to improve reliability.                                          |
+| Error Handling          | Detects and manages failures gracefully without crashing the workflow.                                   |
+| Multi-Agent Systems     | Multiple specialized agents collaborate together to solve tasks.                                         |
+| Human-in-the-Loop       | Allows humans to review, approve, or guide workflow execution.                                           |
+| Persistence             | Saves workflow progress so it can continue later without losing state.                                   |
+| Checkpointing           | Creates save points during execution for recovery or resuming.                                           |
+| Streaming               | Sends outputs gradually in real time instead of waiting for full completion.                             |
+| Parallel Execution      | Runs multiple tasks simultaneously to improve speed and efficiency.                                      |
+| Workflow Orchestration  | Coordinates multiple workflow steps and manages overall execution flow.                                  |
+| Graph Architecture      | Represents workflows as connected graphs rather than fixed linear chains.                                |
+| Context Awareness       | Uses surrounding information and previous interactions intelligently.                                    |
+| Decision Making         | Chooses actions dynamically based on current state and conditions.                                       |
+| Task Delegation         | Assigns subtasks to specialized agents or tools automatically.                                           |
+| Modularity              | Breaks workflows into reusable independent components.                                                   |
+| Scalability             | Supports expansion to larger and more complex AI systems.                                                |
+| Observability           | Helps monitor workflow execution, states, and debugging information.                                     |
+| Extensibility           | Makes it easy to add new tools, nodes, or workflow logic.                                                |
+| Autonomous Execution    | Allows agents to complete tasks independently with minimal human input.                                  |
+| Event-Driven Execution  | Triggers actions automatically when certain events occur.                                                |
+| Dynamic Workflowing     | Changes execution paths dynamically during runtime.                                                      |
+| Interrupt Handling      | Supports pausing and resuming workflows safely.                                                          |
+| RAG Integration         | Combines retrieval systems with LLMs for knowledge-based answering.                                      |
+| Conversation Management | Handles multi-turn conversations while preserving context.                                               |
+| State Persistence       | Maintains workflow state across sessions or executions.                                                  |
+| Async Execution         | Supports non-blocking concurrent operations for better performance.                                      |
+| Agent Coordination      | Manages communication and cooperation between multiple agents.                                           |
+| Fallback Strategies     | Switches to backup methods if primary execution fails.                                                   |
+| Validation              | Verifies correctness of outputs before proceeding further.                                               |
+| Execution Control       | Manages workflow start, stop, transitions, and execution flow.                                           |
+| Reusability             | Allows workflow components to be reused in different projects.                                           |
+| Explainability          | Makes workflow decisions and execution easier to understand.                                             |
+| Integration Capability  | Connects with APIs, databases, vector stores, and external services.                                     |
+| Production Readiness    | Supports stable and reliable deployment in real-world applications.                                      |
+| Custom Logic Support    | Allows developers to define their own workflow behaviors and rules.                                      |
+| Stateful Conversations  | Maintains intelligent long-running conversations with memory.                                            |
+| Sequential Processing   | Executes tasks step-by-step in a fixed order.                                                            |
+| Branching Logic         | Creates multiple execution paths depending on conditions.                                                |
+| Agent Collaboration     | Enables specialized agents to work together toward a common goal.                                        |
+| Intelligent Routing     | Automatically selects the most suitable workflow path.                                                   |
+| Context Propagation     | Passes relevant information between workflow steps consistently.                                         |
+| Self-Correction         | Detects mistakes and improves outputs automatically during execution.                                    |
+
+
+Difference between langchain and langgraph:
+langchain in stateless , langgraph is stateful
+langchain in sequential(is build for sequential chain) , langgraph is event driven
+langchain in human in the loop orineted , langgraph is human in the loop orineted(if human input neede, it wait for that specifie time)
+
+
+
+What is LangGraph
+1. LangGraph is an orchestration framework for building intelligent, stateful, and multi-step LLM workflows.
+2. an orchestration framework means a system that manages and controls the flow of tasks between different AI steps, agents, or tools.
+3. It enables advanced features like parallelism, loops, branching, memory, and resumability - making it ideal for agentic and production-grade Al applications.
+4. It models your logic as a graph of nodes (tasks) and edges (routing) instead of a linear chain.
+
+
+LLM Workflows
+1. LLM workflows are a step by step process using which we can build complex LLM applications.
+2. Each step in a workflow performs a distinct task - such as prompting, reasoning, tool calling, memory access, or decision-making.
+3. Workflows can be linear, parallel, branched, or looped, allowing for complex behaviours like retries, multi-agent communication, or tool-augmented
+reasoning.
