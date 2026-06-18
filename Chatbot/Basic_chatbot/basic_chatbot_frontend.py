@@ -37,30 +37,27 @@ if user_input:
         # put user input in the box
         st.text(user_input)
     initial_state = {'user_query': user_input}
-    '''
-    # without streaming
-    
-    response = workflow.invoke(initial_state)
-    ai_reply = response['llm_response']
-    print('ai_reply', ai_reply)
 
-    st.session_state['message_history'].append({'role': assistant_role, 'content': ai_reply})
-
-    with st.chat_message(assistant_role):
-        # put user input in the box
-        st.text(ai_reply)
-    
-    '''
+    # without streaming code
+    # response = workflow.invoke(initial_state)
+    # ai_reply = response['llm_response']
+    # print('ai_reply', ai_reply)
+    #
+    # st.session_state['message_history'].append({'role': assistant_role, 'content': ai_reply})
+    #
+    # with st.chat_message(assistant_role):
+    #     # put user input in the box
+    #     st.text(ai_reply)
+    # end of without streaming code
 
     #  with streaming
     with st.chat_message(assistant_role):
         response_placeholder = st.empty()
         full_response = ""
-
         for chunk, metadata in workflow.stream(initial_state, stream_mode = "messages"):
             if hasattr(chunk, 'content'):
                 full_response+=chunk.content
-                # response_placeholder.text(full_response)
+                response_placeholder.text(full_response)
 
     # Store message history in session state
     st.session_state['message_history'].append({'role': user_role, 'content': user_input})
