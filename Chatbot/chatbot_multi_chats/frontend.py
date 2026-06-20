@@ -29,8 +29,9 @@ with st.sidebar:
 
 
     # ---------------------------- # Show all chats in sidebar # ---------------------------
-    for chatid in st.session_state.chats.keys():
-        if st.button(chatid):
+    # for chatid in st.session_state.chats.keys():
+    for chatid in reversed(list(st.session_state.chats.keys())):
+        if st.button(chatid, key=f"chat_{chatid}"):
             # Switch to selected chat
             st.session_state.current_chat = chatid
             st.rerun()
@@ -53,7 +54,7 @@ for msg_dict in st.session_state.chats[current_chat]:
     role = msg_dict['role']
     content = msg_dict['content']
     with st.chat_message(role):
-        st.text(content)
+        st.markdown(content)
 
 # LangGraph Thread ID # # Each chat gets separate memory # Similar to ChatGPT conversation
 Config = {'configurable':{'thread_id':current_chat}}
@@ -76,7 +77,7 @@ if user_input:
         # st.text(ai_reply)
         response_placeholder = st.empty()
         ai_reply = ""
-        for chunk, metadata in workflow.stream(initial_state, stream_mode="messages"):
+        for chunk, metadata in workflow.stream(initial_state, config=Config, stream_mode="messages"):
             if hasattr(chunk, 'content'):
                 ai_reply+=chunk.content
                 response_placeholder.text(ai_reply)
