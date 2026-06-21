@@ -1,6 +1,7 @@
 import streamlit as st
 import uuid
 from backend import workflow
+from langchain_core.messages import HumanMessage
 def create_unique_uuid():
     return str(uuid.uuid4())
 
@@ -70,7 +71,12 @@ if user_input:
     msg_dict = {'role':'user', 'content':user_input}
     st.session_state.chats[current_chat].append(msg_dict)
 
-    initial_state={'user_query':user_input}
+    # initial_state={'user_query':user_input}
+    initial_state = {
+        "messages": [
+            HumanMessage(content=user_input)
+        ]
+    }
     with st.chat_message('assistant'):
         # response = workflow.invoke(initial_state)
         # ai_reply = response['llm_response']
